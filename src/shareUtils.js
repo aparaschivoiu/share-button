@@ -86,7 +86,7 @@ class ShareUtils {
    */
   _encode(str) {
     if (typeof str === 'undefined' || str === null || this._isEncoded(str))
-      return str;
+      return encodeURIComponent(str);
     else
       return str.toRFC3986();
   }

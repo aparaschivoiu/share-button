@@ -13,7 +13,7 @@
     pre span.string { color: #2aa198; }
     pre span.new { color: #859900; }
   </style>
-  <meta name='description' content='A simple, light, flexible, and good-looking share button'>
+  <meta name='description' content='A simple, light, flexible, & good-looking share button'>
   <meta property='og:image' content='http://carrot.is/img/fb-share.jpg'>
   <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:700&text=new+Share(".share-button");' rel='stylesheet' type='text/css'>
 </head>
@@ -23,7 +23,7 @@
   </a>
   <share-button></share-button>
   <pre><span class="new">new</span> <span class="class">ShareButton</span>();</pre>
-  <script src='dist/ShareButton-polyfill.js'></script>
+  <script src='dist/ShareButton.js'></script>
   <script>
     var shareButton = new ShareButton({
       networks: {
@@ -39,6 +39,9 @@
         whatsapp: {
           description: "I love carrots!",
           url: "www.carrot.is"
+        },
+        twitter: {
+          url: "http://www.google.com"
         }
       }
     });

@@ -187,7 +187,7 @@ var ShareUtils = (function () {
      * @param {String}  className
      */
     value: function _encode(str) {
-      if (typeof str === "undefined" || str === null || this._isEncoded(str)) return str;else return str.toRFC3986();
+      if (typeof str === "undefined" || str === null || this._isEncoded(str)) return encodeURIComponent(str);else return str.toRFC3986();
     }
   }, {
     key: "popup",
