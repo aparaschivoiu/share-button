@@ -305,7 +305,11 @@ var ShareUtils = (function () {
             var k = _step2.value;
 
             var v = params[k];
+<<<<<<< HEAD
             results.push("" + k + "=" + _this2._encode(v));
+=======
+            results.push("" + k + "=" + _this._encode(v));
+>>>>>>> add basic tests for all networks, change _isMobile to include PhantomJS for testing
           }
         } catch (err) {
           _didIteratorError2 = true;
@@ -401,7 +405,7 @@ var ShareUtils = (function () {
      * @private
      */
     value: function _isMobile() {
-      if (navigator.userAgent.match(/Android|iPhone/i) && !navigator.userAgent.match(/iPod|iPad/i)) return true;
+      if (navigator.userAgent.match(/Android|iPhone|PhantomJS/i) && !navigator.userAgent.match(/iPod|iPad/i)) return true;
       return false;
     }
   }]);

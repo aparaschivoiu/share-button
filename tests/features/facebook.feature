@@ -1,10 +1,11 @@
 Feature: Facebook Network
 
   Background:
-    Given I create a Share Button
+    Given I create a Facebook Share Button
 
-  Scenario: Display Network
-    When I click the Share Button
+  @facebook
+  Scenario: Display Facebook Network
+    When I click the Facebook Share Button
     Then I should see the Facebook button
     When I click the Facebook button
-    Then I should see a new window
+    Then I should see a new Facebook window

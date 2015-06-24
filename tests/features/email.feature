@@ -1,10 +1,11 @@
 Feature: Email Network
 
   Background:
-    Given I create a Share Button
+    Given I create an Email Share Button
 
-  Scenario: Display Network
-    When I click the Share Button
+  @email
+  Scenario: Display Email Network
+    When I click the Email Share Button
     Then I should see the Email button
     When I click the Email button
-    Then I should see a new window
+    Then I should see a new Email window

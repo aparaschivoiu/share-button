@@ -1,10 +1,11 @@
 Feature: Twitter Network
 
   Background:
-    Given I create a Share Button
+    Given I create a Twitter Share Button
 
-  Scenario: Display Network
-    When I click the Share Button
+  @twitter
+  Scenario: Display Twitter Network
+    When I click the Twitter Share Button
     Then I should see the Twitter button
     When I click the Twitter button
-    Then I should see a new window
+    Then I should see a new Twitter window

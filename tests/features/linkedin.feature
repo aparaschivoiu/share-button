@@ -1,10 +1,11 @@
 Feature: Linkedin Network
 
   Background:
-    Given I create a Share Button
+    Given I create a Linkedin Share Button
 
-  Scenario: Display Network
-    When I click the Share Button
+  @linkedin
+  Scenario: Display Linkedin Network
+    When I click the Linkedin Share Button
     Then I should see the Linkedin button
     When I click the Linkedin button
-    Then I should see a new window
+    Then I should see a new Linkedin window

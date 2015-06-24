@@ -1,10 +1,11 @@
 Feature: Reddit Network
 
   Background:
-    Given I create a Share Button
+    Given I create a Reddit Share Button
 
-  Scenario: Display Network
-    When I click the Share Button
+  @reddit
+  Scenario: Display Reddit Network
+    When I click the Reddit Share Button
     Then I should see the Reddit button
     When I click the Reddit button
-    Then I should see a new window
+    Then I should see a new Reddit window
