@@ -1,5 +1,16 @@
 path = require 'path'
 
+networks = [
+  'pinterest'
+  'twitter'
+  'facebook'
+  'whatsapp'
+  'gplus'
+  'reddit'
+  'linkedin'
+  'paper-plane'
+]
+
 fixture = (name) ->
   fixtureBase = path.join(path.resolve(__dirname, "../", "fixtures"), name)
   return "file:///" + fixtureBase + '.html'
@@ -7,12 +18,13 @@ fixture = (name) ->
 module.exports = ->
   @Given /^I create a Share Button$/, ->
     @driver.get(fixture('basic'))
-    @driver.wait()
-    @driver.getTitle()
-      .then (res) -> console.log(res)
 
   @When /^I click the Share Button$/, ->
-    # express the regexp above with the code you wish you had
+    new @Widgets.ShareButtonNetworks().click()
 
   @Then /^I should see all Social Networks$/, ->
-    # express the regexp above with the code you wish you had
+    new @Widgets
+      .ShareButtonNetworks()
+      .each( (network, i) ->
+        network.getAttribute('class').should.eventually.eql(networks[i])
+      )
