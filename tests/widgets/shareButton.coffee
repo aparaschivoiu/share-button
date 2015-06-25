@@ -11,7 +11,3 @@ module.exports = ->
 
   @Widgets.ShareButtonNetworks = @Widget.List.extend
     root: 'share-button'
-
-  @Widgets.fixture = (name) ->
-    fixtureBase = path.join(path.resolve(__dirname, "../", "fixtures"), name)
-    return "file:///" + fixtureBase + '.html'

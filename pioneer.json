@@ -2,7 +2,8 @@
   "feature": "tests/features",
   "require": [
     "tests/steps",
-    "tests/widgets"
+    "tests/widgets",
+    "tests/helpers"
   ],
   "format": "pioneerformat.js",
   "driver": "phantomjs",
