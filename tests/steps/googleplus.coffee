@@ -1,6 +1,6 @@
 module.exports = ->
   @Given /^I create a Google Plus Share Button$/, () ->
-    @driver.get(@Widgets.fixture('googleplus'))
+    @driver.get(@Helpers.fixture('googleplus'))
 
   @When /^I click the Google Plus Share Button$/, () ->
     new @Widgets.ShareButton().clickButton()

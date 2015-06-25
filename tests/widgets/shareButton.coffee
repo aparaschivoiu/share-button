@@ -9,5 +9,8 @@ module.exports = ->
     clickButton: ->
       return @click('label')
 
+  @Widgets.ShareButtonSocial = @Widget.extend
+    root: '.social'
+
   @Widgets.ShareButtonNetworks = @Widget.List.extend
     root: 'share-button'

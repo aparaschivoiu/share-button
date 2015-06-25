@@ -1,6 +1,6 @@
 module.exports = ->
   @Given /^I create a Linkedin Share Button$/, () ->
-    @driver.get(@Widgets.fixture('linkedin'))
+    @driver.get(@Helpers.fixture('linkedin'))
 
   @When /^I click the Linkedin Share Button$/, () ->
     new @Widgets.ShareButton().clickButton()

@@ -1,6 +1,6 @@
 module.exports = ->
   @Given /^I create an Email Share Button$/, () ->
-    @driver.get(@Widgets.fixture('email'))
+    @driver.get(@Helpers.fixture('email'))
 
   @When /^I click the Email Share Button$/, () ->
     new @Widgets.ShareButton().clickButton()
