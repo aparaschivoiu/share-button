@@ -20,11 +20,12 @@ module.exports = ->
     @driver.get(fixture('basic'))
 
   @When /^I click the Share Button$/, ->
-    new @Widgets.ShareButtonNetworks().click()
+    new @Widget
+      root: 'label'
+    .click()
 
   @Then /^I should see all Social Networks$/, ->
     new @Widgets
-      .ShareButtonNetworks()
-      .each( (network, i) ->
-        network.getAttribute('class').should.eventually.eql(networks[i])
-      )
+    .ShareButtonNetworks()
+    .each (item, index) ->
+      item.isVisible().should.eventually.be.true
