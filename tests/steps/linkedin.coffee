@@ -1,17 +1,9 @@
-path = require 'path'
-
-fixture = (name) ->
-  fixtureBase = path.join(path.resolve(__dirname, "../", "fixtures"), name)
-  return "file:///" + fixtureBase + '.html'
-
 module.exports = ->
   @Given /^I create a Linkedin Share Button$/, () ->
-    @driver.get(fixture('linkedin'))
+    @driver.get(@Widgets.fixture('linkedin'))
 
   @When /^I click the Linkedin Share Button$/, () ->
-    new @Widget
-      root: 'label'
-    .click()
+    new @Widgets.ShareButton().clickButton()
 
   @Then /^I should see the Linkedin button$/, () ->
     new @Widgets

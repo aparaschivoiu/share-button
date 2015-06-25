@@ -1,17 +1,9 @@
-path = require 'path'
-
-fixture = (name) ->
-  fixtureBase = path.join(path.resolve(__dirname, "../", "fixtures"), name)
-  return "file:///" + fixtureBase + '.html'
-
 module.exports = ->
   @Given /^I create a Whatsapp Share Button$/, () ->
-    @driver.get(fixture('whatsapp'))
+    @driver.get(@Widgets.fixture('whatsapp'))
 
   @When /^I click the Whatsapp Share Button$/, () ->
-    new @Widget
-      root: 'label'
-    .click()
+    new @Widgets.ShareButton().clickButton()
 
   @Then /^I should see the Whatsapp button$/, () ->
     new @Widgets

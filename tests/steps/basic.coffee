@@ -1,5 +1,3 @@
-path = require 'path'
-
 networks = [
   'pinterest'
   'twitter'
@@ -11,18 +9,12 @@ networks = [
   'paper-plane'
 ]
 
-fixture = (name) ->
-  fixtureBase = path.join(path.resolve(__dirname, "../", "fixtures"), name)
-  return "file:///" + fixtureBase + '.html'
-
 module.exports = ->
   @Given /^I create a Share Button$/, ->
-    @driver.get(fixture('basic'))
+    @driver.get(@Widgets.fixture('basic'))
 
   @When /^I click the Share Button$/, ->
-    new @Widget
-      root: 'label'
-    .click()
+    new @Widgets.ShareButton().clickButton()
 
   @Then /^I should see all Social Networks$/, ->
     new @Widgets
