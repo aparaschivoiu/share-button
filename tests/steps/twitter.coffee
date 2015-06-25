@@ -29,4 +29,8 @@ module.exports = ->
       list[0].click()
 
   @Then /^I should see a new Twitter window$/, () ->
-    # express the regexp above with the code you wish you had
+    new @Widgets.ShareButton().switchToPopup()
+    @driver.getTitle().should.eventually.eql("Post a Tweet on Twitter")
+
+  @Then /^I should have a Twitter share url$/, () ->
+    @driver.getCurrentUrl().should.eventually.eql("https://twitter.com/intent/tweet?text=A%20simple,%20light,%20flexible,%20and%20good-looking%20share%20button&url="+ @Helpers.fixture('twitter'))

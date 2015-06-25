@@ -29,4 +29,8 @@ module.exports = ->
       list[0].click()
 
   @Then /^I should see a new Email window$/, () ->
-    # express the regexp above with the code you wish you had
+    new @Widgets.ShareButton().switchToPopup()
+    @driver.getTitle().should.eventually.eql("")
+
+  @Then /^I should have an Email share url$/, () ->
+    @driver.getCurrentUrl().should.eventually.eql("")

@@ -9,3 +9,4 @@ Feature: Twitter Network
     Then I should see the Twitter button
     When I click the Twitter button
     Then I should see a new Twitter window
+    And I should have a Twitter share url

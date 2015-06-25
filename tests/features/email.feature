@@ -9,3 +9,4 @@ Feature: Email Network
     Then I should see the Email button
     When I click the Email button
     Then I should see a new Email window
+    And I should have an Email share url

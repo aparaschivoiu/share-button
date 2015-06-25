@@ -6,8 +6,14 @@ module.exports = ->
 
   @Widgets.ShareButton = @Widget.extend
     root: 'share-button'
+
     clickButton: ->
       return @click('label')
+
+    switchToPopup: ->
+      popUpWindowHandle = @driver.getAllWindowHandles()
+        .then (res) -> return res[res.length - 1]
+      @driver.switchTo().window(popUpWindowHandle)
 
   @Widgets.ShareButtonSocial = @Widget.extend
     root: '.social'
