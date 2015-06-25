@@ -400,7 +400,8 @@ var ShareUtils = (function () {
 
     /**
      * @method _isMobile
-     * @description Returns true if current device is mobile, false otherwise
+     * @description Returns true if current device is mobile (or PhantomJS for
+     * testing purposes), and false otherwise
      * @author kriskbx
      * [Original Gist] {@link https://github.com/kriskbx/whatsapp-sharing/blob/master/src/button.js}
      * @private
@@ -778,8 +779,7 @@ var ShareButton = (function (_ShareUtils) {
      */
     value: function _eventOpen(button, label) {
       if (this._hasClass(button, 'load')) this._removeClass(button, 'load');
-
-      this._collisionDetection(button, label);
+      if (this.collision) this._collisionDetection(button, label);
       this._addClass(button, 'active');
     }
   }, {
