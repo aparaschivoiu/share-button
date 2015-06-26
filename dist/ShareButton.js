@@ -778,7 +778,9 @@ var ShareButton = (function (_ShareUtils) {
      */
     value: function _eventOpen(button, label) {
       if (this._hasClass(button, 'load')) this._removeClass(button, 'load');
-      if (this.collision) this._collisionDetection(button, label);
+      if (this.collision) {
+        this._collisionDetection(button, label);
+      }
       this._addClass(button, 'active');
     }
   }, {
@@ -894,11 +896,15 @@ var ShareButton = (function (_ShareUtils) {
         switch (position[1]) {
           case 'top':
             button.classList.add('bottom');
-            button.classList.remove('middle', 'top');
+            button.classList.remove('middle');
+            if (position[0] !== 'center') button.classList.remove('top');
             break;
           case 'middle':
-            button.classList.add('middle');
-            button.classList.remove('top', 'bottom');
+            if (position[0] !== 'center') {
+              button.classList.add('middle');
+              button.classList.remove('top');
+            }
+            button.classList.remove('bottom');
             break;
           case 'bottom':
             button.classList.add('top');
@@ -911,7 +917,8 @@ var ShareButton = (function (_ShareUtils) {
             button.classList.remove('center', 'left');
             break;
           case 'center':
-            button.classList.add('center', 'top');
+            if (position[1] !== 'top') button.classList.add('top');
+            button.classList.add('center');
             button.classList.remove('left', 'right', 'middle');
             break;
           case 'right':
