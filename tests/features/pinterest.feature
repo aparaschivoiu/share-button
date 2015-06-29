@@ -8,4 +8,4 @@ Feature: Pinterest Network
     When I click the Pinterest Share Button
     Then I should see the Pinterest button
     When I click the Pinterest button
-    Then I should see a new Pinterest window
+    Then I should have a correct Pinterest share url

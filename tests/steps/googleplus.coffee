@@ -26,7 +26,16 @@ module.exports = ->
       item.hasClass('gplus')
     )
     .then (list) ->
-      list[0].click()
+      list[0].click('a')
 
-  @Then /^I should see a new Google Plus window$/, () ->
-    # express the regexp above with the code you wish you had
+  @Then /^I should have a correct Google Plus share url$/, () ->
+    new @Widgets
+    .ShareButtonNetworks()
+    .filter( (item) ->
+      item.hasClass('gplus')
+    )
+    .then (list) ->
+      list[0].getAttribute(
+        selector: 'a',
+        attribute: 'href'
+      ).should.eventually.eq('https://plus.google.com/share?url=http%3A%2F%2Fwww.example.com%2F')

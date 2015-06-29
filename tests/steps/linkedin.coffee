@@ -26,7 +26,16 @@ module.exports = ->
       item.hasClass('linkedin')
     )
     .then (list) ->
-      list[0].click()
+      list[0].click('a')
 
-  @Then /^I should see a new Linkedin window$/, () ->
-    # express the regexp above with the code you wish you had
+  @Then /^I should have a correct Linkedin share url$/, () ->
+    new @Widgets
+    .ShareButtonNetworks()
+    .filter( (item) ->
+      item.hasClass('linkedin')
+    )
+    .then (list) ->
+      list[0].getAttribute(
+        selector: 'a',
+        attribute: 'href'
+      ).should.eventually.eq('https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fwww.example.com&title=linkedin%20title&summary=linkedin%20description')

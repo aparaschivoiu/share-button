@@ -26,7 +26,16 @@ module.exports = ->
       item.hasClass('reddit')
     )
     .then (list) ->
-      list[0].click()
+      list[0].click('a')
 
-  @Then /^I should see a new Reddit window$/, () ->
-    # express the regexp above with the code you wish you had
+  @Then /^I should have a correct Reddit share url$/, () ->
+    new @Widgets
+    .ShareButtonNetworks()
+    .filter( (item) ->
+      item.hasClass('reddit')
+    )
+    .then (list) ->
+      list[0].getAttribute(
+        selector: 'a',
+        attribute: 'href'
+      ).should.eventually.eq('http://www.reddit.com/submit?url=http%3A%2F%2Fwww.example.com&title=reddit%20title')

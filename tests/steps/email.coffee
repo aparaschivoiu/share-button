@@ -26,11 +26,16 @@ module.exports = ->
       item.hasClass('paper-plane')
     )
     .then (list) ->
-      list[0].click()
+      list[0].click('a')
 
-  @Then /^I should see a new Email window$/, () ->
-    new @Widgets.ShareButton().switchToPopup()
-    @driver.getTitle().should.eventually.eql("")
-
-  @Then /^I should have an Email share url$/, () ->
-    @driver.getCurrentUrl().should.eventually.eql("")
+  @Then /^I should have a correct Email share url$/, () ->
+    new @Widgets
+    .ShareButtonNetworks()
+    .filter( (item) ->
+      item.hasClass('paper-plane')
+    )
+    .then (list) ->
+      list[0].getAttribute(
+        selector: 'a',
+        attribute: 'href'
+      ).should.eventually.eq('mailto:?subject=email%20title&body=email%20description')

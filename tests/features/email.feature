@@ -8,5 +8,4 @@ Feature: Email Network
     When I click the Email Share Button
     Then I should see the Email button
     When I click the Email button
-    Then I should see a new Email window
-    And I should have an Email share url
+    Then I should have a correct Email share url

@@ -8,4 +8,4 @@ Feature: Facebook Network
     When I click the Facebook Share Button
     Then I should see the Facebook button
     When I click the Facebook button
-    Then I should see a new Facebook window
+    Then I should have a correct Facebook share url

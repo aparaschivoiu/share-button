@@ -435,6 +435,9 @@ class ShareButton extends ShareUtils {
       if (!window.FB)
         return console.error('The Facebook JS SDK hasn\'t loaded yet.');
 
+      this._updateHref(element, 'https://www.facebook.com/sharer/sharer.php', {
+        u: this.config.networks.facebook.url
+      });
       return FB.ui({
         method:'feed',
         name: this.config.networks.facebook.title,

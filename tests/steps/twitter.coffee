@@ -26,11 +26,16 @@ module.exports = ->
       item.hasClass('twitter')
     )
     .then (list) ->
-      list[0].click()
+      list[0].click('a')
 
-  @Then /^I should see a new Twitter window$/, () ->
-    new @Widgets.ShareButton().switchToPopup()
-    @driver.getTitle().should.eventually.eql("Post a Tweet on Twitter")
-
-  @Then /^I should have a Twitter share url$/, () ->
-    @driver.getCurrentUrl().should.eventually.eql("https://twitter.com/intent/tweet?text=A%20simple,%20light,%20flexible,%20and%20good-looking%20share%20button&url="+ @Helpers.fixture('twitter'))
+  @Then /^I should have a correct Twitter share url$/, () ->
+    new @Widgets
+    .ShareButtonNetworks()
+    .filter( (item) ->
+      item.hasClass('twitter')
+    )
+    .then (list) ->
+      list[0].getAttribute(
+        selector: 'a',
+        attribute: 'href'
+      ).should.eventually.eq('https://twitter.com/intent/tweet?text=twitter%20description&url=http%3A%2F%2Fwww.example.com')

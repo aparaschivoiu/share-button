@@ -26,7 +26,16 @@ module.exports = ->
       item.hasClass('whatsapp')
     )
     .then (list) ->
-      list[0].click()
+      list[0].click('a')
 
-  @Then /^I should see a new Whatsapp window$/, () ->
-    # express the regexp above with the code you wish you had
+  @Then /^I should have a correct Whatsapp share url$/, () ->
+    new @Widgets
+    .ShareButtonNetworks()
+    .filter( (item) ->
+      item.hasClass('whatsapp')
+    )
+    .then (list) ->
+      list[0].getAttribute(
+        selector: 'a',
+        attribute: 'href'
+      ).should.eventually.eq('whatsapp://send?text=whatsapp%20description%20http%3A%2F%2Fwww.example.com')

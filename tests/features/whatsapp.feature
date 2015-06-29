@@ -8,4 +8,4 @@ Feature: Whatsapp Network
     When I click the Whatsapp Share Button
     Then I should see the Whatsapp button
     When I click the Whatsapp button
-    Then I should see a new Whatsapp window
+    Then I should have a correct Whatsapp share url

@@ -260,16 +260,17 @@ var ShareUtils = (function () {
       var encode = url.indexOf("mailto:") >= 0;
       var a = element.getElementsByTagName("a")[0];
       a.setAttribute("href", this._getUrl(url, !encode, params));
+      if (!encode && !this.config.networks.facebook.loadSdk) {
+        var popup = {
+          width: 500,
+          height: 350
+        };
 
-      var popup = {
-        width: 500,
-        height: 350
-      };
+        popup.top = screen.height / 2 - popup.height / 2;
+        popup.left = screen.width / 2 - popup.width / 2;
 
-      popup.top = screen.height / 2 - popup.height / 2;
-      popup.left = screen.width / 2 - popup.width / 2;
-
-      if (!encode) window.open(a.href, "targetWindow", "\n          toolbar=no,\n          location=no,\n          status=no,\n          menubar=no,\n          scrollbars=yes,\n          resizable=yes,\n          left=" + popup.left + ",\n          top=" + popup.top + ",\n          width=" + popup.width + ",\n          height=" + popup.height + "\n        ");
+        window.open(a.href, "targetWindow", "\n          toolbar=no,\n          location=no,\n          status=no,\n          menubar=no,\n          scrollbars=yes,\n          resizable=yes,\n          left=" + popup.left + ",\n          top=" + popup.top + ",\n          width=" + popup.width + ",\n          height=" + popup.height + "\n        ");
+      }
     }
   }, {
     key: "popup",
@@ -305,11 +306,7 @@ var ShareUtils = (function () {
             var k = _step2.value;
 
             var v = params[k];
-<<<<<<< HEAD
             results.push("" + k + "=" + _this2._encode(v));
-=======
-            results.push("" + k + "=" + _this._encode(v));
->>>>>>> add basic tests for all networks, change _isMobile to include PhantomJS for testing
           }
         } catch (err) {
           _didIteratorError2 = true;
@@ -963,6 +960,9 @@ var ShareButton = (function (_ShareUtils) {
       if (this.config.networks.facebook.loadSdk) {
         if (!window.FB) return console.error('The Facebook JS SDK hasn\'t loaded yet.');
 
+        this._updateHref(element, 'https://www.facebook.com/sharer/sharer.php', {
+          u: this.config.networks.facebook.url
+        });
         return FB.ui({
           method: 'feed',
           name: this.config.networks.facebook.title,

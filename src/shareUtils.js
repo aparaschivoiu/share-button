@@ -130,16 +130,15 @@ class ShareUtils {
     let encode = url.indexOf('mailto:') >= 0;
     let a = element.getElementsByTagName('a')[0];
     a.setAttribute('href', this._getUrl(url, !encode, params));
+    if(!encode && !this.config.networks.facebook.loadSdk) {
+      let popup = {
+        width: 500,
+        height: 350
+      };
 
-    let popup = {
-      width: 500,
-      height: 350
-    };
+      popup.top = (screen.height / 2) - (popup.height / 2);
+      popup.left = (screen.width / 2)  - (popup.width / 2);
 
-    popup.top = (screen.height / 2) - (popup.height / 2);
-    popup.left = (screen.width / 2)  - (popup.width / 2);
-
-    if(!encode)
       window.open(
         a.href,
         'targetWindow', `
@@ -155,6 +154,7 @@ class ShareUtils {
           height=${popup.height}
         `
       );
+    }
   }
 
   /**

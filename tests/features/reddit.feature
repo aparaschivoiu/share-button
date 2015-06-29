@@ -8,4 +8,4 @@ Feature: Reddit Network
     When I click the Reddit Share Button
     Then I should see the Reddit button
     When I click the Reddit button
-    Then I should see a new Reddit window
+    Then I should have a correct Reddit share url

@@ -26,7 +26,16 @@ module.exports = ->
       item.hasClass('facebook')
     )
     .then (list) ->
-      list[0].click()
+      list[0].click('a')
 
-  @Then /^I should see a new Facebook window$/, () ->
-    # express the regexp above with the code you wish you had
+  @Then /^I should have a correct Facebook share url$/, () ->
+    new @Widgets
+    .ShareButtonNetworks()
+    .filter( (item) ->
+      item.hasClass('facebook')
+    )
+    .then (list) ->
+      list[0].getAttribute(
+        selector: 'a',
+        attribute: 'href'
+      ).should.eventually.eq('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.example.com')

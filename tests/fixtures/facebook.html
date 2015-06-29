@@ -20,8 +20,6 @@
       z-index: 100;
     }
   </style>
-  <meta name='description' content='A simple, light, flexible, and good-looking share button'>
-  <meta property='og:image' content='http://carrot.is/img/fb-share.jpg'>
 </head>
 
 <body>
@@ -36,7 +34,15 @@
         googlePlus: { enabled: false },
         reddit: { enabled: false },
         linkedin: { enabled: false },
-        email: { enabled: false }
+        email: { enabled: false },
+        facebook: {
+          url: 'http://www.example.com',
+          appId: "1007527835932544",
+          title: "FB Title",
+          caption: "FB Caption",
+          description: "FB Description",
+          image: "http://carrot.is/img/fb-share.jpg"
+        }
       }
     });
   </script>
